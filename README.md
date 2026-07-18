@@ -1,3 +1,7 @@
+<img width="1140" height="528" alt="IMG_4904" src="https://github.com/user-attachments/assets/9853df90-f83d-4805-b6e7-035d4cf01d7d" />
+
+
+
 # Synomize
 
 **Complex systems, made simple in VR.**
@@ -24,4 +28,8 @@ The long-term goal is to let creators, students, educators, entrepreneurs, and e
 
 Active prototype in development for OpenAI Build Week.
 
-Core research, implementation details, and private experimental systems are intentionally not documented publicly.
+Core research, implementation details, and private experimental systems are internally managed under SynHumanity Labs.
+
+## Credits
+
+Synomize was vibe-code built by Angie Wilkinson as part of the SynHumanity Labs ecosystem.
