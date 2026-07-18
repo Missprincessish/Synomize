@@ -1,0 +1,27 @@
+# Godot
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# Builds and generated output
+Builds/
+build/
+android/build/
+generated/
+generated_apps/
+
+# macOS
+.DS_Store
+
+# Logs and local evidence
+*.log
+logs/
+
+# Secrets and local configuration
+.env
+.env.*
+*.keystore
+*.jks
+*.p12
+*.pem
