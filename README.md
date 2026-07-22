@@ -4,7 +4,7 @@
 
 # Synomize
 
-**Complex systems, made simple in VR.**
+**Vibe Coding in VR for all ages**
 
 Synomize is an immersive software creation platform designed to help people build real software visually, without requiring traditional programming knowledge.
 
