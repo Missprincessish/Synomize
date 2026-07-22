@@ -1,0 +1,165 @@
+{
+  "catalog_id": "vectorverse.reusable_app_atoms",
+  "catalog_version": "1.0.0",
+  "serialization_version": 1,
+  "atoms": [
+    {
+      "id": "entity_crud",
+      "version": "1.0.0",
+      "family": "Action",
+      "operation": "CRUD_ENTITY",
+      "parameters": [
+        "entity",
+        "id_field",
+        "fields"
+      ]
+    },
+    {
+      "id": "persistent_store",
+      "version": "1.0.0",
+      "family": "State",
+      "operation": "PERSIST_JSON",
+      "parameters": [
+        "state_fields",
+        "recovery_defaults"
+      ]
+    },
+    {
+      "id": "navigation_tabs",
+      "version": "1.0.0",
+      "family": "Action",
+      "operation": "NAVIGATE_SCREENS",
+      "parameters": [
+        "screens"
+      ]
+    },
+    {
+      "id": "validated_form",
+      "version": "1.0.0",
+      "family": "Condition",
+      "operation": "VALIDATE_FORM",
+      "parameters": [
+        "fields",
+        "rules"
+      ]
+    },
+    {
+      "id": "countdown_timer",
+      "version": "1.0.0",
+      "family": "Loop",
+      "operation": "TIMER_SECONDS",
+      "parameters": [
+        "source_field",
+        "multiplier"
+      ]
+    },
+    {
+      "id": "counter_wallet",
+      "version": "1.0.0",
+      "family": "Variable",
+      "operation": "COUNTER_ADJUST",
+      "parameters": [
+        "counter",
+        "minimum",
+        "maximum"
+      ]
+    },
+    {
+      "id": "streak_counter",
+      "version": "1.0.0",
+      "family": "Variable",
+      "operation": "STREAK_UPDATE",
+      "parameters": [
+        "counter",
+        "increment"
+      ]
+    },
+    {
+      "id": "list_screen",
+      "version": "1.0.0",
+      "family": "Group",
+      "operation": "UI_LIST_SCREEN",
+      "parameters": [
+        "entity",
+        "title",
+        "row_fields",
+        "actions"
+      ]
+    },
+    {
+      "id": "dashboard_screen",
+      "version": "1.0.0",
+      "family": "Group",
+      "operation": "UI_DASHBOARD",
+      "parameters": [
+        "metrics",
+        "text"
+      ]
+    },
+    {
+      "id": "settings_screen",
+      "version": "1.0.0",
+      "family": "Group",
+      "operation": "UI_SETTINGS",
+      "parameters": [
+        "text"
+      ]
+    },
+    {
+      "id": "error_recovery",
+      "version": "1.0.0",
+      "family": "Action",
+      "operation": "ERROR_RECOVERY",
+      "parameters": [
+        "message_field",
+        "reset_on_corrupt"
+      ]
+    },
+    {
+      "id": "entity_toggle",
+      "version": "1.0.0",
+      "family": "Action",
+      "operation": "TOGGLE_FIELD",
+      "parameters": [
+        "entity",
+        "field"
+      ]
+    },
+    {
+      "id": "entity_complete",
+      "version": "1.0.0",
+      "family": "Action",
+      "operation": "COMPLETE_ENTITY",
+      "parameters": [
+        "entity",
+        "completion_field",
+        "counter_updates",
+        "date_field"
+      ]
+    },
+    {
+      "id": "super_crud_persistent_form",
+      "version": "1.0.0",
+      "family": "Group",
+      "operation": "SUPERBLOCK",
+      "expands_to": [
+        "entity_crud",
+        "persistent_store",
+        "validated_form",
+        "error_recovery"
+      ]
+    },
+    {
+      "id": "super_multiscreen_collection_app",
+      "version": "1.0.0",
+      "family": "Group",
+      "operation": "SUPERBLOCK",
+      "expands_to": [
+        "navigation_tabs",
+        "list_screen",
+        "dashboard_screen",
+        "settings_screen"
+      ]
+    }
+  ]
+}

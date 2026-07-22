@@ -1,0 +1,140 @@
+{
+  "app_id": "snooze_tax_lite",
+  "app_name": "Snooze Tax Lite",
+  "bundle_id": "org.synhumanity.snoozetaxlite.reusable",
+  "entity": {
+    "singular": "alarm",
+    "plural": "alarms",
+    "title": "Alarms",
+    "fields": [
+      {
+        "id": "hour",
+        "type": "int",
+        "default": 7,
+        "min": 0,
+        "max": 23,
+        "label": "Hour"
+      },
+      {
+        "id": "minute",
+        "type": "int",
+        "default": 0,
+        "min": 0,
+        "max": 59,
+        "label": "Minute"
+      },
+      {
+        "id": "label",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "max_length": 40,
+        "label": "Label"
+      },
+      {
+        "id": "snooze_minutes",
+        "type": "int",
+        "default": 5,
+        "min": 1,
+        "max": 60,
+        "label": "Snooze"
+      },
+      {
+        "id": "enabled",
+        "type": "bool",
+        "default": true,
+        "label": "Enabled"
+      },
+      {
+        "id": "snooze_count",
+        "type": "int",
+        "default": 0,
+        "label": "Snoozes"
+      }
+    ],
+    "row_fields": [
+      "hour",
+      "minute",
+      "label"
+    ]
+  },
+  "state": {
+    "coins": 100,
+    "streak": 0
+  },
+  "screens": [
+    {
+      "id": "Alarms",
+      "kind": "list"
+    },
+    {
+      "id": "Dashboard",
+      "kind": "dashboard"
+    },
+    {
+      "id": "Settings",
+      "kind": "settings"
+    }
+  ],
+  "behaviors": [
+    {
+      "atom": "entity_crud"
+    },
+    {
+      "atom": "persistent_store"
+    },
+    {
+      "atom": "validated_form"
+    },
+    {
+      "atom": "navigation_tabs"
+    },
+    {
+      "atom": "countdown_timer",
+      "source_field": "snooze_minutes",
+      "multiplier": 60
+    },
+    {
+      "atom": "counter_wallet",
+      "counter": "coins",
+      "change_expression": "-(snooze_minutes * 2)",
+      "minimum": 0
+    },
+    {
+      "atom": "streak_counter",
+      "counter": "streak",
+      "increment": 1
+    },
+    {
+      "atom": "entity_toggle",
+      "field": "enabled"
+    },
+    {
+      "atom": "error_recovery"
+    },
+    {
+      "atom": "list_screen",
+      "actions": [
+        "timed_adjust",
+        "complete",
+        "toggle",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "atom": "dashboard_screen"
+    },
+    {
+      "atom": "settings_screen"
+    }
+  ],
+  "ui": {
+    "dashboard_text": "Wake on time to grow your streak. Snoozing costs 2 coins per minute.",
+    "settings_text": "Generated from reusable VectorVerse atoms",
+    "metrics": [
+      "coins",
+      "streak"
+    ]
+  }
+}

@@ -1,0 +1,1568 @@
+{
+  "application_contract": {
+    "all_logic_must_originate_from_ir": true,
+    "forbid_handwritten_generated_logic": true
+  },
+  "compiler_contract_version": "1.0.0",
+  "control_edges": [],
+  "data_edges": [],
+  "graph_id": "snooze_tax_lite_authoritative_graph",
+  "ir_schema_version": "2.0.0",
+  "migration_version": 1,
+  "nodes": [
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_001",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "app_name": "Snooze Tax Lite",
+        "components": [
+          "AlarmRow",
+          "AlarmEditor",
+          "CoinCard",
+          "StreakCard",
+          "ErrorBanner"
+        ],
+        "module_id": "snooze_tax_lite",
+        "scope_id": "app",
+        "screens": [
+          "Alarms",
+          "Dashboard",
+          "Settings"
+        ]
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_001",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "event_entry",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Event",
+      "migration_version": 1,
+      "node_id": "stl_999",
+      "operation_kind": "EVENT_ENTRY",
+      "parameters": {
+        "event": "APP_START",
+        "target": "load_state"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_999",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_write",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_002",
+      "operation_kind": "STATE_WRITE",
+      "parameters": {
+        "default": 100,
+        "lifetime": "persistent",
+        "state_id": "coins",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_002",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_003",
+      "operation_kind": "STATE_READ",
+      "parameters": {
+        "lifetime": "persistent",
+        "state_id": "coins",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_003",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_write",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_004",
+      "operation_kind": "STATE_WRITE",
+      "parameters": {
+        "default": 0,
+        "lifetime": "persistent",
+        "state_id": "streak",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_004",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_005",
+      "operation_kind": "STATE_READ",
+      "parameters": {
+        "lifetime": "persistent",
+        "state_id": "streak",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_005",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_write",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_006",
+      "operation_kind": "STATE_WRITE",
+      "parameters": {
+        "default": [],
+        "lifetime": "persistent",
+        "state_id": "alarms",
+        "value_type": "Array"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_006",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_007",
+      "operation_kind": "STATE_READ",
+      "parameters": {
+        "lifetime": "persistent",
+        "state_id": "alarms",
+        "value_type": "Array"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_007",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_write",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_008",
+      "operation_kind": "STATE_WRITE",
+      "parameters": {
+        "default": 1,
+        "lifetime": "persistent",
+        "state_id": "next_alarm_id",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_008",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_009",
+      "operation_kind": "STATE_READ",
+      "parameters": {
+        "lifetime": "persistent",
+        "state_id": "next_alarm_id",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_009",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_write",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_010",
+      "operation_kind": "STATE_WRITE",
+      "parameters": {
+        "default": "",
+        "lifetime": "persistent",
+        "state_id": "last_error",
+        "value_type": "String"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_010",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "state_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "State",
+      "migration_version": 1,
+      "node_id": "stl_011",
+      "operation_kind": "STATE_READ",
+      "parameters": {
+        "lifetime": "persistent",
+        "state_id": "last_error",
+        "value_type": "String"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_011",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_012",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "alarm_id",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_012",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_013",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "alarm_id",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_013",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_014",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "hour",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_014",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_015",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "hour",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_015",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_016",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "minute",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_016",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_017",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "minute",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_017",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_018",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "label",
+        "value_type": "String"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_018",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_019",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "label",
+        "value_type": "String"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_019",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_020",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "enabled",
+        "value_type": "Bool"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_020",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_021",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "enabled",
+        "value_type": "Bool"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_021",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_022",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "snooze_minutes",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_022",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_023",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "snooze_minutes",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_023",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_bind",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_024",
+      "operation_kind": "VAR_BIND",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "penalty",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_024",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "var_read",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_025",
+      "operation_kind": "VAR_READ",
+      "parameters": {
+        "scope_id": "alarm",
+        "symbol": "penalty",
+        "value_type": "Int"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_025",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_026",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "snooze_penalty",
+        "left": "snooze_minutes",
+        "operator": "*",
+        "result_type": "Int",
+        "right": 2
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_026",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_027",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "coins_after_penalty",
+        "left": "coins",
+        "operator": "-",
+        "result_type": "Int",
+        "right": "penalty"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_027",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_028",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "valid_hour",
+        "left": "hour",
+        "operator": "range",
+        "result_type": "Bool",
+        "right": [
+          0,
+          23
+        ]
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_028",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_029",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "valid_minute",
+        "left": "minute",
+        "operator": "range",
+        "result_type": "Bool",
+        "right": [
+          0,
+          59
+        ]
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_029",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_030",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "valid_snooze",
+        "left": "snooze_minutes",
+        "operator": "range",
+        "result_type": "Bool",
+        "right": [
+          1,
+          60
+        ]
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_030",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "expression",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Variable",
+      "migration_version": 1,
+      "node_id": "stl_031",
+      "operation_kind": "EXPRESSION",
+      "parameters": {
+        "expression_id": "alarm_count",
+        "left": "alarms",
+        "operator": "size",
+        "result_type": "Int",
+        "right": null
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_031",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "cond_branch",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Condition",
+      "migration_version": 1,
+      "node_id": "stl_032",
+      "operation_kind": "COND_BRANCH",
+      "parameters": {
+        "condition_id": "validate_hour",
+        "expression": "valid_hour",
+        "false_path": "error",
+        "true_path": "continue"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_032",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "cond_branch",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Condition",
+      "migration_version": 1,
+      "node_id": "stl_033",
+      "operation_kind": "COND_BRANCH",
+      "parameters": {
+        "condition_id": "validate_minute",
+        "expression": "valid_minute",
+        "false_path": "error",
+        "true_path": "continue"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_033",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "cond_branch",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Condition",
+      "migration_version": 1,
+      "node_id": "stl_034",
+      "operation_kind": "COND_BRANCH",
+      "parameters": {
+        "condition_id": "validate_snooze",
+        "expression": "valid_snooze",
+        "false_path": "error",
+        "true_path": "continue"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_034",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "cond_branch",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Condition",
+      "migration_version": 1,
+      "node_id": "stl_035",
+      "operation_kind": "COND_BRANCH",
+      "parameters": {
+        "condition_id": "coins_nonnegative",
+        "expression": "coins_after_penalty",
+        "false_path": "error",
+        "true_path": "continue"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_035",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "loop_ctrl",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "STATEFUL",
+      "family": "Loop",
+      "migration_version": 1,
+      "node_id": "stl_036",
+      "operation_kind": "LOOP_CTRL",
+      "parameters": {
+        "collection": "alarms",
+        "loop_id": "render_alarm_rows",
+        "max_iterations": 100
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_036",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_037",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "load_state",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_037",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [
+        "FILE_IO"
+      ],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_038",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "PERSIST_LOAD"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_038",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_039",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_039",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_040",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "save_state",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_040",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [
+        "FILE_IO"
+      ],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_041",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "PERSIST_SAVE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_041",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_042",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_042",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_043",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "create_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_043",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_044",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_CREATE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_044",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_045",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_045",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_046",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "edit_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_046",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_047",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_EDIT"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_047",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_048",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_048",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_049",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "delete_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_049",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_050",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_DELETE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_050",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_051",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_051",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_052",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "toggle_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_052",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_053",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_TOGGLE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_053",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_054",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_054",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_055",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "snooze_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_055",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_056",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_SNOOZE",
+        "coins_per_minute": 2
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_056",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_057",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_057",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_058",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "complete_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_058",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_059",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_COMPLETE",
+        "streak_increment": 1
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_059",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_060",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_060",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_061",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "validate_alarm",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_061",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_062",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "ALARM_VALIDATE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_062",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_063",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Dictionary"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_063",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_064",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "recover_corrupt_state",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_064",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [
+        "FILE_IO"
+      ],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_065",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "RECOVER_CORRUPT_STATE"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_065",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_066",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Variant"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_066",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_067",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "navigate_screen",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_067",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_068",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "NAVIGATE",
+        "screens": [
+          "Alarms",
+          "Dashboard",
+          "Settings"
+        ]
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_068",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_069",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Variant"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_069",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "function_or_module_boundary",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_070",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "parameters": {
+        "module_id": "render_ui",
+        "scope_id": "app"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_070",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "action_call",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_071",
+      "operation_kind": "ACTION_CALL",
+      "parameters": {
+        "action_kind": "RENDER_COMPONENTS"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_071",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "return",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [],
+      "effect_class": "PURE",
+      "family": "Group",
+      "migration_version": 1,
+      "node_id": "stl_072",
+      "operation_kind": "RETURN",
+      "parameters": {
+        "return_type": "Variant"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_072",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    },
+    {
+      "atom_id": "error_path",
+      "atom_schema_version": "1.0.0",
+      "capabilities": [
+        "LOG"
+      ],
+      "effect_class": "EFFECTFUL",
+      "family": "Action",
+      "migration_version": 1,
+      "node_id": "stl_073",
+      "operation_kind": "ERROR_PATH",
+      "parameters": {
+        "error_id": "validation_or_persistence_failure",
+        "recovery": "preserve_last_good_state_and_return_diagnostic"
+      },
+      "ports": [],
+      "serialization_version": 2,
+      "source_block_id": "block_stl_073",
+      "target_support": {
+        "gdscript": "supported"
+      }
+    }
+  ],
+  "serialization_version": 2,
+  "source_graph_schema_version": "2.0.0",
+  "target_support": {
+    "gdscript": "required"
+  }
+}

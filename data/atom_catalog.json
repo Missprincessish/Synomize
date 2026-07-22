@@ -1,0 +1,629 @@
+{
+  "catalog_version": "2.0.0",
+  "atom_schema_version": "1.0.0",
+  "families": [
+    "Variable",
+    "Action",
+    "Condition",
+    "Loop",
+    "Event",
+    "State",
+    "Group"
+  ],
+  "entry_atoms": [
+    "app_start"
+  ],
+  "atoms": [
+    {
+      "id": "app_start",
+      "schema_version": "1.0.0",
+      "family": "Event",
+      "display_name": "APP START",
+      "shape": "Pentagon",
+      "explanation": "Begins the program when the scene starts.",
+      "operation_kind": "EVENT_ENTRY",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        }
+      ],
+      "compatible_next": [
+        "display_message"
+      ],
+      "parameters": {},
+      "codegen_operation": "entry_ready",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "display_message",
+      "schema_version": "1.0.0",
+      "family": "Action",
+      "display_name": "LOG / DISPLAY MESSAGE",
+      "shape": "Triangle",
+      "explanation": "Displays the message: Hello, Synomize!",
+      "operation_kind": "ACTION_CALL",
+      "effect_class": "EFFECTFUL",
+      "capabilities": [
+        "LOG"
+      ],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "message",
+          "category": "data",
+          "direction": "input",
+          "value_type": "String",
+          "required": true,
+          "default_parameter": "message"
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "message": {
+          "type": "String",
+          "required": true,
+          "default": "Hello, Synomize!"
+        }
+      },
+      "codegen_operation": "print_message",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "bool_value",
+      "schema_version": "1.0.0",
+      "family": "Variable",
+      "display_name": "BOOLEAN VALUE",
+      "shape": "Diamond",
+      "explanation": "Provides a true or false value for a Condition.",
+      "operation_kind": "VALUE_LITERAL",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "output",
+          "value_type": "Bool",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "value": {
+          "type": "Bool",
+          "required": true,
+          "default": true
+        }
+      },
+      "codegen_operation": "bool_literal",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "condition",
+      "schema_version": "1.0.0",
+      "family": "Condition",
+      "display_name": "CONDITION",
+      "shape": "Diamond",
+      "explanation": "Chooses the true or false path from a Boolean value.",
+      "operation_kind": "COND_BRANCH",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "condition",
+          "category": "data",
+          "direction": "input",
+          "value_type": "Bool",
+          "required": true
+        },
+        {
+          "id": "true",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": false
+        },
+        {
+          "id": "false",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": false
+        }
+      ],
+      "compatible_next": [
+        "display_message"
+      ],
+      "parameters": {},
+      "codegen_operation": "if_else",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "string_value",
+      "schema_version": "1.0.0",
+      "family": "Variable",
+      "display_name": "STRING VALUE",
+      "shape": "Compiler",
+      "explanation": "STRING VALUE",
+      "operation_kind": "VALUE_LITERAL",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "output",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "value": {
+          "type": "String",
+          "required": true,
+          "default": ""
+        }
+      },
+      "codegen_operation": "value_literal",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "state_write",
+      "schema_version": "1.0.0",
+      "family": "State",
+      "display_name": "STATE WRITE",
+      "shape": "Cylinder",
+      "explanation": "Writes a value into temporary session state.",
+      "operation_kind": "STATE_WRITE",
+      "effect_class": "STATEFUL",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "input",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [
+        "state_read"
+      ],
+      "parameters": {
+        "state_id": {
+          "type": "String",
+          "required": true,
+          "default": "welcomeMessage"
+        },
+        "lifetime": {
+          "type": "String",
+          "required": true,
+          "default": "session"
+        }
+      },
+      "codegen_operation": "session_state_write",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "state_read",
+      "schema_version": "1.0.0",
+      "family": "State",
+      "display_name": "STATE READ",
+      "shape": "Cylinder",
+      "explanation": "Reads a value from temporary session state.",
+      "operation_kind": "STATE_READ",
+      "effect_class": "STATEFUL",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "output",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [
+        "display_message"
+      ],
+      "parameters": {
+        "state_id": {
+          "type": "String",
+          "required": true,
+          "default": "welcomeMessage"
+        },
+        "lifetime": {
+          "type": "String",
+          "required": true,
+          "default": "session"
+        }
+      },
+      "codegen_operation": "session_state_read",
+      "target_support": {
+        "gdscript": "proven"
+      }
+    },
+    {
+      "id": "variable_bind",
+      "schema_version": "1.0.0",
+      "family": "Variable",
+      "display_name": "BIND VARIABLE",
+      "shape": "Compiler",
+      "explanation": "BIND VARIABLE",
+      "operation_kind": "VAR_BIND",
+      "effect_class": "STATEFUL",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "input",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "symbol": {
+          "type": "String",
+          "required": true,
+          "default": "value"
+        },
+        "scope_id": {
+          "type": "String",
+          "required": true,
+          "default": "root"
+        }
+      },
+      "codegen_operation": "var_bind",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "variable_read",
+      "schema_version": "1.0.0",
+      "family": "Variable",
+      "display_name": "READ VARIABLE",
+      "shape": "Compiler",
+      "explanation": "READ VARIABLE",
+      "operation_kind": "VAR_READ",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "output",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "symbol": {
+          "type": "String",
+          "required": true,
+          "default": "value"
+        },
+        "scope_id": {
+          "type": "String",
+          "required": true,
+          "default": "root"
+        }
+      },
+      "codegen_operation": "var_read",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "expression",
+      "schema_version": "1.0.0",
+      "family": "Variable",
+      "display_name": "EXPRESSION",
+      "shape": "Compiler",
+      "explanation": "EXPRESSION",
+      "operation_kind": "EXPRESSION",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "left",
+          "category": "data",
+          "direction": "input",
+          "value_type": "Int",
+          "required": true
+        },
+        {
+          "id": "right",
+          "category": "data",
+          "direction": "input",
+          "value_type": "Int",
+          "required": true
+        },
+        {
+          "id": "result",
+          "category": "data",
+          "direction": "output",
+          "value_type": "Int",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "operator": {
+          "type": "String",
+          "required": true,
+          "default": "+"
+        }
+      },
+      "codegen_operation": "expression",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "loop",
+      "schema_version": "1.0.0",
+      "family": "Loop",
+      "display_name": "LOOP",
+      "shape": "Compiler",
+      "explanation": "LOOP",
+      "operation_kind": "LOOP_CTRL",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "body",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "done",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "condition",
+          "category": "data",
+          "direction": "input",
+          "value_type": "Bool",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "max_iterations": {
+          "type": "Int",
+          "required": true,
+          "default": 100
+        }
+      },
+      "codegen_operation": "loop_ctrl",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "module_boundary",
+      "schema_version": "1.0.0",
+      "family": "Group",
+      "display_name": "MODULE",
+      "shape": "Compiler",
+      "explanation": "MODULE",
+      "operation_kind": "FUNCTION_OR_MODULE_BOUNDARY",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": false
+        },
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": false
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {
+        "module_id": {
+          "type": "String",
+          "required": true,
+          "default": "main"
+        },
+        "scope_id": {
+          "type": "String",
+          "required": true,
+          "default": "root"
+        }
+      },
+      "codegen_operation": "function_or_module_boundary",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "return",
+      "schema_version": "1.0.0",
+      "family": "Action",
+      "display_name": "RETURN",
+      "shape": "Compiler",
+      "explanation": "RETURN",
+      "operation_kind": "RETURN",
+      "effect_class": "PURE",
+      "capabilities": [],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "value",
+          "category": "data",
+          "direction": "input",
+          "value_type": "String",
+          "required": false
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {},
+      "codegen_operation": "return",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    },
+    {
+      "id": "error_path",
+      "schema_version": "1.0.0",
+      "family": "Action",
+      "display_name": "ERROR PATH",
+      "shape": "Compiler",
+      "explanation": "ERROR PATH",
+      "operation_kind": "ERROR_PATH",
+      "effect_class": "EFFECTFUL",
+      "capabilities": [
+        "LOG"
+      ],
+      "ports": [
+        {
+          "id": "control_in",
+          "category": "control",
+          "direction": "input",
+          "value_type": "Void",
+          "required": true
+        },
+        {
+          "id": "control_out",
+          "category": "control",
+          "direction": "output",
+          "value_type": "Void",
+          "required": false
+        },
+        {
+          "id": "error",
+          "category": "data",
+          "direction": "input",
+          "value_type": "String",
+          "required": true
+        }
+      ],
+      "compatible_next": [],
+      "parameters": {},
+      "codegen_operation": "error_path",
+      "target_support": {
+        "gdscript": "unsupported"
+      }
+    }
+  ],
+  "operation_contract_version": "1.0.0",
+  "canonical_operations": [
+    "VALUE_LITERAL",
+    "VAR_BIND",
+    "VAR_READ",
+    "EXPRESSION",
+    "EVENT_ENTRY",
+    "ACTION_CALL",
+    "COND_BRANCH",
+    "LOOP_CTRL",
+    "STATE_READ",
+    "STATE_WRITE",
+    "FUNCTION_OR_MODULE_BOUNDARY",
+    "RETURN",
+    "ERROR_PATH"
+  ]
+}

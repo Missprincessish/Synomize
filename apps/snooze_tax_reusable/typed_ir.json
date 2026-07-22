@@ -1,0 +1,365 @@
+{
+  "app": {
+    "app_id": "snooze_tax_lite",
+    "app_name": "Snooze Tax Lite",
+    "behaviors": [
+      {
+        "atom": "entity_crud"
+      },
+      {
+        "atom": "persistent_store"
+      },
+      {
+        "atom": "validated_form"
+      },
+      {
+        "atom": "navigation_tabs"
+      },
+      {
+        "atom": "countdown_timer",
+        "multiplier": 60,
+        "source_field": "snooze_minutes"
+      },
+      {
+        "atom": "counter_wallet",
+        "change_expression": "-(snooze_minutes * 2)",
+        "counter": "coins",
+        "minimum": 0
+      },
+      {
+        "atom": "streak_counter",
+        "counter": "streak",
+        "increment": 1
+      },
+      {
+        "atom": "entity_toggle",
+        "field": "enabled"
+      },
+      {
+        "atom": "error_recovery"
+      },
+      {
+        "actions": [
+          "timed_adjust",
+          "complete",
+          "toggle",
+          "edit",
+          "delete"
+        ],
+        "atom": "list_screen"
+      },
+      {
+        "atom": "dashboard_screen"
+      },
+      {
+        "atom": "settings_screen"
+      }
+    ],
+    "bundle_id": "org.synhumanity.snoozetaxlite.reusable",
+    "entity": {
+      "fields": [
+        {
+          "default": 7,
+          "id": "hour",
+          "label": "Hour",
+          "max": 23,
+          "min": 0,
+          "type": "int"
+        },
+        {
+          "default": 0,
+          "id": "minute",
+          "label": "Minute",
+          "max": 59,
+          "min": 0,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "id": "label",
+          "label": "Label",
+          "max_length": 40,
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": 5,
+          "id": "snooze_minutes",
+          "label": "Snooze",
+          "max": 60,
+          "min": 1,
+          "type": "int"
+        },
+        {
+          "default": true,
+          "id": "enabled",
+          "label": "Enabled",
+          "type": "bool"
+        },
+        {
+          "default": 0,
+          "id": "snooze_count",
+          "label": "Snoozes",
+          "type": "int"
+        }
+      ],
+      "plural": "alarms",
+      "row_fields": [
+        "hour",
+        "minute",
+        "label"
+      ],
+      "singular": "alarm",
+      "title": "Alarms"
+    },
+    "screens": [
+      {
+        "id": "Alarms",
+        "kind": "list"
+      },
+      {
+        "id": "Dashboard",
+        "kind": "dashboard"
+      },
+      {
+        "id": "Settings",
+        "kind": "settings"
+      }
+    ],
+    "state": {
+      "coins": 100,
+      "streak": 0
+    },
+    "ui": {
+      "dashboard_text": "Wake on time to grow your streak. Snoozing costs 2 coins per minute.",
+      "metrics": [
+        "coins",
+        "streak"
+      ],
+      "settings_text": "Generated from reusable VectorVerse atoms"
+    }
+  },
+  "catalog_id": "vectorverse.reusable_app_atoms",
+  "catalog_version": "1.0.0",
+  "control_edges": [
+    {
+      "edge_id": "control_0001",
+      "from_node": "node_0001",
+      "to_node": "node_0002"
+    },
+    {
+      "edge_id": "control_0002",
+      "from_node": "node_0002",
+      "to_node": "node_0003"
+    },
+    {
+      "edge_id": "control_0003",
+      "from_node": "node_0003",
+      "to_node": "node_0004"
+    },
+    {
+      "edge_id": "control_0004",
+      "from_node": "node_0004",
+      "to_node": "node_0005"
+    },
+    {
+      "edge_id": "control_0005",
+      "from_node": "node_0005",
+      "to_node": "node_0006"
+    },
+    {
+      "edge_id": "control_0006",
+      "from_node": "node_0006",
+      "to_node": "node_0007"
+    },
+    {
+      "edge_id": "control_0007",
+      "from_node": "node_0007",
+      "to_node": "node_0008"
+    },
+    {
+      "edge_id": "control_0008",
+      "from_node": "node_0008",
+      "to_node": "node_0009"
+    },
+    {
+      "edge_id": "control_0009",
+      "from_node": "node_0009",
+      "to_node": "node_0010"
+    },
+    {
+      "edge_id": "control_0010",
+      "from_node": "node_0010",
+      "to_node": "node_0011"
+    },
+    {
+      "edge_id": "control_0011",
+      "from_node": "node_0011",
+      "to_node": "node_0012"
+    }
+  ],
+  "data_edges": [],
+  "ir_schema_version": "3.0.0",
+  "nodes": [
+    {
+      "atom_id": "entity_crud",
+      "atom_version": "1.0.0",
+      "family": "Action",
+      "node_id": "node_0001",
+      "operation": "CRUD_ENTITY",
+      "parameters": {
+        "atom": "entity_crud",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0001"
+    },
+    {
+      "atom_id": "persistent_store",
+      "atom_version": "1.0.0",
+      "family": "State",
+      "node_id": "node_0002",
+      "operation": "PERSIST_JSON",
+      "parameters": {
+        "atom": "persistent_store",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0002"
+    },
+    {
+      "atom_id": "validated_form",
+      "atom_version": "1.0.0",
+      "family": "Condition",
+      "node_id": "node_0003",
+      "operation": "VALIDATE_FORM",
+      "parameters": {
+        "atom": "validated_form",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0003"
+    },
+    {
+      "atom_id": "navigation_tabs",
+      "atom_version": "1.0.0",
+      "family": "Action",
+      "node_id": "node_0004",
+      "operation": "NAVIGATE_SCREENS",
+      "parameters": {
+        "atom": "navigation_tabs",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0004"
+    },
+    {
+      "atom_id": "countdown_timer",
+      "atom_version": "1.0.0",
+      "family": "Loop",
+      "node_id": "node_0005",
+      "operation": "TIMER_SECONDS",
+      "parameters": {
+        "atom": "countdown_timer",
+        "entity": "alarm",
+        "multiplier": 60,
+        "source_field": "snooze_minutes"
+      },
+      "source_block_id": "snooze_tax_lite_block_0005"
+    },
+    {
+      "atom_id": "counter_wallet",
+      "atom_version": "1.0.0",
+      "family": "Variable",
+      "node_id": "node_0006",
+      "operation": "COUNTER_ADJUST",
+      "parameters": {
+        "atom": "counter_wallet",
+        "change_expression": "-(snooze_minutes * 2)",
+        "counter": "coins",
+        "entity": "alarm",
+        "minimum": 0
+      },
+      "source_block_id": "snooze_tax_lite_block_0006"
+    },
+    {
+      "atom_id": "streak_counter",
+      "atom_version": "1.0.0",
+      "family": "Variable",
+      "node_id": "node_0007",
+      "operation": "STREAK_UPDATE",
+      "parameters": {
+        "atom": "streak_counter",
+        "counter": "streak",
+        "entity": "alarm",
+        "increment": 1
+      },
+      "source_block_id": "snooze_tax_lite_block_0007"
+    },
+    {
+      "atom_id": "entity_toggle",
+      "atom_version": "1.0.0",
+      "family": "Action",
+      "node_id": "node_0008",
+      "operation": "TOGGLE_FIELD",
+      "parameters": {
+        "atom": "entity_toggle",
+        "entity": "alarm",
+        "field": "enabled"
+      },
+      "source_block_id": "snooze_tax_lite_block_0008"
+    },
+    {
+      "atom_id": "error_recovery",
+      "atom_version": "1.0.0",
+      "family": "Action",
+      "node_id": "node_0009",
+      "operation": "ERROR_RECOVERY",
+      "parameters": {
+        "atom": "error_recovery",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0009"
+    },
+    {
+      "atom_id": "list_screen",
+      "atom_version": "1.0.0",
+      "family": "Group",
+      "node_id": "node_0010",
+      "operation": "UI_LIST_SCREEN",
+      "parameters": {
+        "actions": [
+          "timed_adjust",
+          "complete",
+          "toggle",
+          "edit",
+          "delete"
+        ],
+        "atom": "list_screen",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0010"
+    },
+    {
+      "atom_id": "dashboard_screen",
+      "atom_version": "1.0.0",
+      "family": "Group",
+      "node_id": "node_0011",
+      "operation": "UI_DASHBOARD",
+      "parameters": {
+        "atom": "dashboard_screen",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0011"
+    },
+    {
+      "atom_id": "settings_screen",
+      "atom_version": "1.0.0",
+      "family": "Group",
+      "node_id": "node_0012",
+      "operation": "UI_SETTINGS",
+      "parameters": {
+        "atom": "settings_screen",
+        "entity": "alarm"
+      },
+      "source_block_id": "snooze_tax_lite_block_0012"
+    }
+  ],
+  "serialization_version": 3
+}

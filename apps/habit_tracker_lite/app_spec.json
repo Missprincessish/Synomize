@@ -1,0 +1,134 @@
+{
+  "app_id": "habit_tracker_lite",
+  "app_name": "Habit Tracker Lite",
+  "bundle_id": "org.synhumanity.habittrackerlite",
+  "entity": {
+    "singular": "habit",
+    "plural": "habits",
+    "title": "Habits",
+    "fields": [
+      {
+        "id": "name",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "max_length": 50,
+        "label": "Habit"
+      },
+      {
+        "id": "target_days",
+        "type": "int",
+        "default": 7,
+        "min": 1,
+        "max": 365,
+        "label": "Target Days"
+      },
+      {
+        "id": "enabled",
+        "type": "bool",
+        "default": true,
+        "label": "Enabled"
+      },
+      {
+        "id": "completed_today",
+        "type": "bool",
+        "default": false,
+        "label": "Done Today"
+      },
+      {
+        "id": "streak",
+        "type": "int",
+        "default": 0,
+        "label": "Streak"
+      },
+      {
+        "id": "last_completed_date",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "max_length": 10,
+        "label": "Last Completed"
+      }
+    ],
+    "row_fields": [
+      "name",
+      "streak"
+    ]
+  },
+  "state": {
+    "total_completions": 0
+  },
+  "screens": [
+    {
+      "id": "Habits",
+      "kind": "list"
+    },
+    {
+      "id": "Dashboard",
+      "kind": "dashboard"
+    },
+    {
+      "id": "Settings",
+      "kind": "settings"
+    }
+  ],
+  "behaviors": [
+    {
+      "atom": "entity_crud"
+    },
+    {
+      "atom": "persistent_store"
+    },
+    {
+      "atom": "validated_form"
+    },
+    {
+      "atom": "navigation_tabs"
+    },
+    {
+      "atom": "streak_counter",
+      "counter": "entity.streak",
+      "increment": 1
+    },
+    {
+      "atom": "counter_wallet",
+      "counter": "total_completions",
+      "change_expression": "1",
+      "minimum": 0
+    },
+    {
+      "atom": "entity_toggle",
+      "field": "enabled"
+    },
+    {
+      "atom": "entity_complete",
+      "completion_field": "completed_today",
+      "date_field": "last_completed_date"
+    },
+    {
+      "atom": "error_recovery"
+    },
+    {
+      "atom": "list_screen",
+      "actions": [
+        "complete",
+        "toggle",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "atom": "dashboard_screen"
+    },
+    {
+      "atom": "settings_screen"
+    }
+  ],
+  "ui": {
+    "dashboard_text": "Complete each habit once per day to grow its streak.",
+    "settings_text": "Generated from reusable VectorVerse atoms",
+    "metrics": [
+      "total_completions"
+    ]
+  }
+}
